@@ -308,9 +308,7 @@ const Particles = ({
       <bufferGeometry ref={geometryRef}>
         <bufferAttribute
           attach="attributes-position"
-          count={PARTICLE_COUNT}
-          array={targets.null}
-          itemSize={3}
+          args={[targets.null, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -329,14 +327,12 @@ const Particles = ({
 
 // --- 3. UI LAYOUT ---
 function HoverSpan({
-  id,
   isActive,
   children,
   onEnter,
   onLeave,
   onClick,
 }: {
-  id: ShapeType;
   isActive: boolean;
   children: React.ReactNode;
   onEnter: () => void;
@@ -375,10 +371,10 @@ export default function PortfolioHeader() {
             Enzo Manuel Mangano
           </h1>
           <p className="text-sm">
-            <HoverSpan id="design" isActive={hoveredWord === "design"} onEnter={() => setHoveredWord("design")} onLeave={() => setHoveredWord(null)}>Design Engineer</HoverSpan>{" "}
-            <HoverSpan id="focused" isActive={hoveredWord === "focused"} onEnter={() => setHoveredWord("focused")} onLeave={() => setHoveredWord(null)}>focused on</HoverSpan>{" "}
-            <HoverSpan id="react" isActive={hoveredWord === "react"} onEnter={() => setHoveredWord("react")} onLeave={() => setHoveredWord(null)}>React Native</HoverSpan>{" "}
-            <HoverSpan id="animations" isActive={hoveredWord === "animations"} onEnter={() => setHoveredWord("animations")} onLeave={() => setHoveredWord(null)} onClick={() => setBeatTrigger(performance.now())}>animations.</HoverSpan>
+            <HoverSpan isActive={hoveredWord === "design"} onEnter={() => setHoveredWord("design")} onLeave={() => setHoveredWord(null)}>Design Engineer</HoverSpan>{" "}
+            <HoverSpan isActive={hoveredWord === "focused"} onEnter={() => setHoveredWord("focused")} onLeave={() => setHoveredWord(null)}>focused on</HoverSpan>{" "}
+            <HoverSpan isActive={hoveredWord === "react"} onEnter={() => setHoveredWord("react")} onLeave={() => setHoveredWord(null)}>React Native</HoverSpan>{" "}
+            <HoverSpan isActive={hoveredWord === "animations"} onEnter={() => setHoveredWord("animations")} onLeave={() => setHoveredWord(null)} onClick={() => setBeatTrigger(performance.now())}>animations.</HoverSpan>
           </p>
         </div>
 
